@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neil Montesines - Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="./style.css">
+
+</head>
+<body class="bg-black text-gray-100">
+
+    <nav id="desktop-nav" class="fixed top-8 right-4 z-50 hidden md:block">
+        <div class="bg-black rounded-xl shadow-lg p-2 md:p-4">
+            <ul class="flex md:flex-row space-y-2 md:space-y-0 md:space-x-4">
+                <li>
+                    <a href="#" onclick="showPage('home-section')" id="home-link" class="link text-blue-500 active-underline font-medium py-2 px-3 rounded-md transition-colors duration-200">Home</a>
+                </li>
+                <li>
+                    <a href="#" onclick="showPage('about-section')" id="about-link" class="link text-blue-300 hover:text-blue-500 underline-on-hover font-medium py-2 px-3 rounded-md transition-colors duration-200">About</a>
+                </li>
+                <li>
+                    <a href="#" onclick="showPage('project-section')" id="project-link" class="link text-blue-300 hover:text-blue-500 underline-on-hover font-medium py-2 px-3 rounded-md transition-colors duration-200">Project</a>
+                </li>
+                <li>
+                    <a href="#" onclick="showPage('skills-section')" id="skills-link" class="link text-blue-300 hover:text-blue-500 underline-on-hover font-medium py-2 px-3 rounded-md transition-colors duration-200">Skills</a>
+                </li>
+                <li>
+                    <a href="#"
+                    onclick="showPage('certificate-section')"
+                    id="certificate-link"
+                    class="link text-blue-300 hover:text-blue-500 underline-on-hover font-medium py-2 px-3 rounded-md transition-colors duration-200">
+                        Certificate
+                    </a>
+                </li>
+                <li>
+                    <a href="#" onclick="showPage('contact-section')" id="contact-link" class="link text-blue-300 hover:text-blue-500 underline-on-hover font-medium py-2 px-3 rounded-md transition-colors duration-200">Contact</a>
+                </li>
+                <li>
+                    <a href="./Resume/Montesines_Neil_Resume.pdf" target="_blank" download="Montesines_Neil_Resume.pdf" id="download-resume-link" class="inline-block px-4 py-2 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 transition duration-200">
+                        Download Resume &rarr;
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    
+    <div class="fixed top-6 right-6 z-50 md:hidden flex items-center space-x-4">
+        <a href="./Resume/Montesines_Neil_Resume.pdf" target="_blank" download="Montesines_Neil_Resume.pdf" class="inline-block px-4 py-2 bg-blue-600 text-white text-xs font-semibold rounded-lg shadow-md hover:bg-blue-700 transition duration-200">
+            Resume
+        </a>
+        <div id="hamburger-menu" class="hamburger-icon cursor-pointer z-50 p-2 rounded-full bg-black/50" onclick="toggleMobileMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+
+    <div id="mobile-nav" class="mobile-nav-menu p-8 pt-24 flex flex-col items-center space-y-8 md:hidden">
+        <a href="#" onclick="showPage('home-section'); toggleMobileMenu();" class="text-2xl font-medium text-blue-500 hover:text-white transition duration-200">Home</a>
+        <a href="#" onclick="showPage('about-section'); toggleMobileMenu();" class="text-2xl font-medium text-blue-300 hover:text-white transition duration-200">About</a>
+        <a href="#" onclick="showPage('project-section'); toggleMobileMenu();" class="text-2xl font-medium text-blue-300 hover:text-white transition duration-200">Project</a>
+        <a href="#" onclick="showPage('skills-section'); toggleMobileMenu();" class="text-2xl font-medium text-blue-300 hover:text-white transition duration-200">Skills</a>
+        <a href="#" onclick="showPage('contact-section'); toggleMobileMenu();" class="text-2xl font-medium text-blue-300 hover:text-white transition duration-200">Contact</a>
+        <a href="#" onclick="showPage('certificate-section'); toggleMobileMenu();" class="text-2xl font-medium text-blue-300 hover:text-white transition duration-200"> Certificate </a>
+    </div>
+
+    <main id="home-section" class="min-h-screen w-full flex items-center justify-center px-4 pt-36 md:pt-28 pb-12">
+        <div class="container mx-auto flex flex-col md:flex-row-reverse items-center gap-8 md:gap-16 max-w-6xl">
+            
+            <!-- Profile Picture -->
+            <div class="w-full md:w-1/2 flex justify-center p-4 mt-8 md:mt-0">
+            <img class="w-40 h-40 sm:w-52 sm:h-52 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-full object-cover glowing-shadow" 
+                src="./profile/pic.jfif" 
+                alt="Your Profile Picture">
+            </div>
+
+            <!-- About Section -->
+            <div class="w-full md:w-1/2 text-center md:text-left px-2">
+            <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-4 relative inline-block">
+                Neil Montesines
+                <span class="name-underline"></span>
+            </h1>
+            
+            <p class="text-sm sm:text-base md:text-lg text-gray-300 leading-relaxed max-w-2xl mx-auto md:mx-0 mb-6">
+                I'm a passionate developer and a recent graduate with a Bachelor of Science in Information Technology (Class of 2025).
+                My portfolio showcases the hands-on skills I've gained in web development through various academic and personal projects.
+                While I'm dedicated to building clean, functional applications, I also enjoy using my simple editing skills to create engaging content and project showcases.
+                My long-term goal is to apply my coding and problem-solving abilities to new creative challenges, and I'm excited to use my foundation to make games soon.
+            </p>
+
+            <!-- Social Links -->
+            <div class="flex flex-wrap justify-center md:justify-start gap-6 mt-4">
+                <a href="https://github.com/zekalia-code" target="_blank" aria-label="GitHub Profile">
+                <i class="fab fa-github fa-2x social-icon"></i>
+                </a>
+                <a href="https://www.facebook.com/z3kalia/" target="_blank" aria-label="Facebook Profile">
+                <i class="fab fa-facebook-f fa-2x social-icon"></i>
+                </a>
+                <a href="mailto:neilmntsns@gmail.com" target="_blank" aria-label="Email Link">
+                <i class="far fa-envelope fa-2x social-icon"></i>
+                </a>
+                <a href="https://www.instagram.com/human_fist_248/" target="_blank" aria-label="Instagram Profile">
+                <i class="fab fa-instagram fa-2x social-icon"></i>
+                </a>
+                <a href="https://t.me/Zekalia" target="_blank" aria-label="Telegram Profile">
+                <i class="fab fa-telegram-plane fa-2x social-icon"></i>
+                </a>
+            </div>
+            </div>
+            
+        </div>
+    </main>
+
+    <main id="about-section" class="h-screen w-full hidden items-start justify-start px-8 md:pl-24"> 
+        <div class="container text-left max-w-6xl"> 
+            <h1 class="text-3xl md:text-4xl font-extrabold text-blue-400 mb-8">
+                About Me ----------------------------------------------------------
+            </h1>
+
+            <div class="flex flex-col-reverse md:flex-row gap-8 items-start mb-12">
+                
+                <div class="w-full md:w-3/5 space-y-6">
+                    <p class="text-lg text-gray-300 leading-relaxed text-justify">
+                        I'm Neil Montesines, a fresh IT Graduate and an aspiring developer 
+                        who specializes in bringing digital ideas to life.
+                        I focus on combining strong front-end architecture (HTML, CSS/Tailwind, JavaScript) with robust logic to create web applications that are both intuitive and high-performing.
+                        I thrive on the challenge of transforming complex problems into elegant, user-centric solutions.
+                    </p>
+
+                    <p class="text-lg text-gray-300 leading-relaxed text-justify">
+                        My core philosophy is that every line of code should serve a clear purpose. 
+                        This dedication to clean, scalable development is what drives my projects.
+                        As I transition from academic projects into the professional world, I’m committed to continuous learning—a journey that is currently leading me toward exploring game development as my next creative frontier.
+                        I’m eager to contribute my problem-solving skills and energy to a challenging team environment.
+                    </p>
+
+                    <a href="#" onclick="showPage('contact-section')" class="inline-block mt-4 px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 transition duration-200">
+                        Let's Connect and Collaborate &rarr;
+                    </a>
+                </div>
+
+                <div class="w-full md:w-2/5 flex justify-center md:justify-end">
+                    <img 
+                        class="w-48 h-48 md:w-64 md:h-64 object-cover rounded-xl glowing-shadow" 
+                        src="./My pictures/1758344323529.jpg" 
+                        alt="Neil Montesines Profile Picture"
+                    >
+                </div>
+                
+            </div>
+            <h2 class="text-xl md:text-2xl font-bold text-blue-300 mt-16 mb-4">
+                Education
+            </h2>
+             <div class="space-y-6">
+
+                <div class="bg-gray-900 p-6 rounded-lg border border-blue-600/70">
+                    <p class="text-lg font-semibold text-gray-200">2022 - 2025</p>
+                    <p class="text-xl font-medium text-white">College</p>
+                    <p class="text-base font-bold text-blue-400">Bachelor of Science in Information Technology (BSIT)</p>
+                    <p class="text-base font-bold text-gray-400">Jesus Reigns Christian College</p>
+                </div>
+
+                <div class="bg-gray-900 p-6 rounded-lg border border-blue-600/70">
+                    <p class="text-lg font-semibold text-gray-200">2020 - 2022</p>
+                    <p class="text-xl font-medium text-white">Senior High School</p>
+                    <p class="text-base font-bold text-blue-400">ABM (Accounting, Business, and Management)</p>
+                    <p class="text-base font-bold text-gray-400">Jesus Reigns Christian Academy</p>
+                </div>
+
+                <div class="bg-gray-900 p-6 rounded-lg border border-blue-600/70">
+                    <p class="text-lg font-semibold text-gray-200">2016 - 2020</p>
+                    <p class="text-xl font-medium text-white">Junior High School</p>
+                    <p class="text-base font-bold text-gray-400">Manuel A. Roxas High School</p>
+                </div>
+
+                <div class="bg-gray-900 p-6 rounded-lg border border-blue-600/70">
+                    <p class="text-lg font-semibold text-gray-200">2010 - 2016</p>
+                    <p class="text-xl font-medium text-white">Elementary School</p>
+                    <p class="text-base font-bold text-gray-400">Fernando Maria Guerrero Elementary School</p>
+                </div>
+
+            </div>
+
+            <h2 class="text-xl md:text-2xl font-bold text-blue-300 mt-16 mb-4">
+                Professional Interests
+            </h2>
+            <p class="text-base text-gray-400 mb-6">The technical and creative fields that fuel my drive for continuous development.</p>
+
+            <div class="bg-gray-900 border border-blue-500 rounded-lg p-4 max-w-4xl text-gray-300 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+
+            <div class="flex flex-col items-center text-center bg-blue-700/70 px-4 py-5 rounded-md border border-blue-500 cursor-default select-none min-h-[120px]">
+                <img src="./about-me/Professional Interest/Coding.jpg" alt="Coding Icon" class="w-10 h-10 object-contain rounded-full mb-2" />
+                <span class="text-sm sm:text-base md:text-lg">Clean Code Architecture</span>
+            </div>
+
+            <div class="flex flex-col items-center text-center bg-blue-700/70 px-4 py-5 rounded-md border border-blue-500 cursor-default select-none min-h-[120px]">
+                <img src="./about-me/Professional Interest/Learning-New-Technology.jpg" alt="Learning Icon" class="w-10 h-10 object-contain rounded-full mb-2" />
+                <span class="text-sm sm:text-base md:text-lg">Emerging Frameworks (e.g., Svelte)</span>
+            </div>
+
+            <div class="flex flex-col items-center text-center bg-blue-700/70 px-4 py-5 rounded-md border border-blue-500 cursor-default select-none min-h-[120px]">
+                <img src="./about-me/Professional Interest/UX.jpg" alt="UX Icon" class="w-10 h-10 object-contain rounded-full mb-2" />
+                <span class="text-sm sm:text-base md:text-lg">User Experience (UX)</span>
+            </div>
+
+            <div class="flex flex-col items-center text-center bg-blue-700/70 px-4 py-5 rounded-md border border-blue-500 cursor-default select-none min-h-[120px]">
+                <img src="./about-me/Professional Interest/data.jpg" alt="Data Icon" class="w-10 h-10 object-contain rounded-full mb-2" />
+                <span class="text-sm sm:text-base md:text-lg">Data Structures & Algorithms</span>
+            </div>
+
+            <div class="flex flex-col items-center text-center bg-blue-700/70 px-4 py-5 rounded-md border border-blue-500 cursor-default select-none min-h-[120px]">
+                <img src="./about-me/Professional Interest/web sec.jpg" alt="Security Icon" class="w-10 h-10 object-contain rounded-full mb-2" />
+                <span class="text-sm sm:text-base md:text-lg">Web Security Practices</span>
+            </div>
+
+            <div class="flex flex-col items-center text-center bg-blue-700/70 px-4 py-5 rounded-md border border-blue-500 cursor-default select-none min-h-[120px]">
+                <img src="./about-me/Professional Interest/cloud computing.jpg" alt="Cloud Icon" class="w-10 h-10 object-contain rounded-full mb-2" />
+                <span class="text-sm sm:text-base md:text-lg">Basic Cloud Computing</span>
+            </div>
+
+            </div>
+
+            <h2 class="text-xl md:text-2xl font-bold text-blue-300 mt-16 mb-4">
+                Personal Hobbies & Activities
+            </h2>
+            <p class="text-base text-gray-400 mb-6">Activities I pursue to stay creative, balanced, and ready for new challenges.</p>
+
+            <div class="bg-gray-900 border border-blue-500 rounded-lg p-4 max-w-4xl text-gray-300 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mt-6">
+
+            <div class="flex flex-col items-center text-center bg-blue-700/70 px-4 py-5 rounded-md border border-blue-500 cursor-default select-none min-h-[120px]">
+                <img src="./about-me/Personal Hobbies & Activities/Gaming.jpg" alt="Gaming Icon" class="w-10 h-10 object-contain rounded-full mb-2" />
+                <span class="text-sm sm:text-base md:text-lg">Competitive Gaming</span>
+            </div>
+
+            <div class="flex flex-col items-center text-center bg-blue-700/70 px-4 py-5 rounded-md border border-blue-500 cursor-default select-none min-h-[120px]">
+                <img src="./about-me/Personal Hobbies & Activities/edit.jpg" alt="Video Editing Icon" class="w-10 h-10 object-contain rounded-full mb-2" />
+                <span class="text-sm sm:text-base md:text-lg">Simple Video Editing</span>
+            </div>
+
+            <div class="flex flex-col items-center text-center bg-blue-700/70 px-4 py-5 rounded-md border border-blue-500 cursor-default select-none min-h-[120px]">
+                <img src="./about-me/Personal Hobbies & Activities/Traveling.jpg" alt="Travel Icon" class="w-10 h-10 object-contain rounded-full mb-2" />
+                <span class="text-sm sm:text-base md:text-lg">Exploring New Places</span>
+            </div>
+
+            <div class="flex flex-col items-center text-center bg-blue-700/70 px-4 py-5 rounded-md border border-blue-500 cursor-default select-none min-h-[120px]">
+                <img src="./about-me/Personal Hobbies & Activities/Anime.jpg" alt="Anime Icon" class="w-10 h-10 object-contain rounded-full mb-2" />
+                <span class="text-sm sm:text-base md:text-lg">Anime</span>
+            </div>
+
+            <div class="flex flex-col items-center text-center bg-blue-700/70 px-4 py-5 rounded-md border border-blue-500 cursor-default select-none min-h-[120px]">
+                <img src="./about-me/Personal Hobbies & Activities/K-Drama.jpg" alt="Kdrama Icon" class="w-10 h-10 object-contain rounded-full mb-2" />
+                <span class="text-sm sm:text-base md:text-lg">K-Drama</span>
+            </div>
+
+            <div class="flex flex-col items-center text-center bg-blue-700/70 px-4 py-5 rounded-md border border-blue-500 cursor-default select-none min-h-[120px]">
+                <img src="./about-me/Personal Hobbies & Activities/Music.jpg" alt="Music Icon" class="w-10 h-10 object-contain rounded-full mb-2" />
+                <span class="text-sm sm:text-base md:text-lg">Discovering New Music</span>
+            </div>
+
+            <div class="flex flex-col items-center text-center bg-blue-700/70 px-4 py-5 rounded-md border border-blue-500 cursor-default select-none min-h-[120px] sm:col-span-2 md:col-span-1">
+                <img src="./about-me/Personal Hobbies & Activities/Coffee.jpg" alt="Coffee Icon" class="w-10 h-10 object-contain rounded-full mb-2" />
+                <span class="text-sm sm:text-base md:text-lg">Coffee Brewing / Tasting</span>
+            </div>
+
+            </div>
+        </div>
+    </main>
+
+    <main id="project-section" class="w-full hidden flex-col items-start justify-start px-4 md:px-24 overflow-y-auto">
+        <div class="container mx-auto max-w-6xl">
+            <h1 class="text-3xl md:text-4xl font-extrabold text-blue-400 mb-8">
+            My Projects --------------------------------------------------------
+            </h1>
+
+            <!-- INTRO -->
+            <div id="project-intro" class="project-section-box space-y-4">
+            <h2 class="text-xl md:text-2xl font-bold text-blue-300">
+                Introduction & Overview
+            </h2>
+            <p class="text-lg text-gray-300 leading-relaxed text-justify">
+                This gallery highlights my journey through web development, showcasing academic projects and personal ventures in both code and media. Each piece demonstrates my commitment to clean architecture, intuitive design, and solving real-world problems.
+            </p>
+            <p class="text-lg text-gray-300 leading-relaxed text-justify">
+                You'll find links to live applications, repositories, and video explanations of the goals, challenges, and technologies used in each project. I focus on technologies like HTML/CSS (Tailwind), JavaScript, and basic database integration.
+            </p>
+            <a href="https://github.com/zekalia-code" target="_blank"
+                class="inline-block mt-4 px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 transition duration-200">
+                View GitHub Profile &rarr;
+            </a>
+            </div>
+
+            <!-- VIDEOS -->
+            <div id="project-videos" class="project-section-box space-y-6 mt-10">
+            <h2 class="text-xl md:text-2xl font-bold text-blue-300">
+                Media Projects & Editing Showcases <i class="fas fa-video ml-3"></i>
+            </h2>
+            <p class="text-base text-gray-400">
+                These videos demonstrate my skills in visual presentation, flow, and simple video editing.
+            </p>
+
+            <div class="relative">
+                <div id="video-carousel" class="video-scroll-container flex space-x-6 pb-4">
+
+                <!-- Video 1 -->
+                <div class="video-card w-[300px] bg-gray-900 p-3 rounded-lg border border-blue-700/50">
+                    <div class="video-container">
+                    <video class="w-full rounded-lg custom-video"
+                            controls playsinline preload="metadata" controlslist="nodownload">
+                        <source src="./Project/Video/Blog Teaser.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    </div>
+                    <h3 class="text-md font-semibold text-white mt-3 mb-1 truncate">Blog teaser</h3>
+                    <p class="text-xs text-gray-500">Tools Used: CapCut (CP/Mobile), Basic Photo Editing</p>
+                </div>
+
+                <!-- Video 2 -->
+                <div class="video-card w-[300px] bg-gray-900 p-3 rounded-lg border border-blue-700/50">
+                    <div class="video-container">
+                    <video class="w-full rounded-lg custom-video"
+                            controls playsinline preload="metadata" controlslist="nodownload">
+                        <source src="./Project/Video/Enrollment.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    </div>
+                    <h3 class="text-md font-semibold text-white mt-3 mb-1 truncate">Enrollment</h3>
+                    <p class="text-xs text-gray-500">Tools Used: CapCut (CP/Mobile), Basic Photo Editing</p>
+                </div>
+
+                </div>
+
+                <!-- Left / Right Buttons -->
+                <button id="scroll-left-btn"
+                class="absolute top-1/2 -left-10 transform -translate-y-1/2 bg-blue-600 p-2 rounded-full text-white hover:bg-blue-700 transition duration-200">
+                <i class="fas fa-chevron-left"></i>
+                </button>
+
+                <button id="scroll-right-btn"
+                class="absolute top-1/2 -right-10 transform -translate-y-1/2 bg-blue-600 p-2 rounded-full text-white hover:bg-blue-700 transition duration-200">
+                <i class="fas fa-chevron-right"></i>
+                </button>
+                </div>
+            </div>
+
+        <!-- PICTURES -->
+        <div id="project-pictures" class="project-section-box space-y-6 mb-20 mt-10">
+        <h2 class="text-xl md:text-2xl font-bold text-blue-300">
+            Project Screenshots <i class="fas fa-image ml-3"></i>
+        </h2>
+        <p class="text-base text-gray-400">A visual showcase of the user interfaces and functionality of my key development projects.</p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- POS -->
+            <div class="bg-gray-800 rounded-lg overflow-hidden border border-blue-600/50 hover:shadow-lg hover:shadow-blue-500/30 transition">
+            <img src="./Project/Pictures/Main dashboard POS.png" alt="Ever Store POS System Dashboard" class="w-full h-auto object-cover border-b border-blue-600/50">
+            <div class="p-4">
+                <h3 class="text-lg font-semibold text-white">POS Dashboard</h3>
+                <p class="text-xs text-gray-500">Project Name: Ever Store System</p>
+                <p class="text-xs text-yellow-400 mt-2">Technologies: Python (Tkinter), DB Sqlite, API Integration</p>
+            </div>
+            </div>
+            <!-- Weather -->
+            <div class="bg-gray-800 rounded-lg overflow-hidden border border-blue-600/50 hover:shadow-lg hover:shadow-blue-500/30 transition">
+            <img src="./Project/Pictures/Weather App.png" alt="Weather Application Screenshot" class="w-full h-auto object-cover border-b border-blue-600/50">
+            <div class="p-4">
+                <h3 class="text-lg font-semibold text-white">Weather Lookup</h3>
+                <p class="text-xs text-gray-500">Project Name: Simple Weather App</p>
+                <p class="text-xs text-yellow-400 mt-2">Technologies: JavaScript, HTML, CSS, OpenWeatherMap API</p>
+            </div>
+            </div>
+            <!-- Game -->
+            <div class="bg-gray-800 rounded-lg overflow-hidden border border-blue-600/50 hover:shadow-lg hover:shadow-blue-500/30 transition">
+            <img src="./Project/Pictures/Click the box game.png" alt="Click the Box Game Screenshot" class="w-full h-auto object-cover border-b border-blue-600/50">
+            <div class="p-4">
+                <h3 class="text-lg font-semibold text-white">Click the Box Game</h3>
+                <p class="text-xs text-gray-500">Project Name: Reaction Timer Game</p>
+                <p class="text-xs text-yellow-400 mt-2">Technologies: Pure JavaScript, HTML, CSS</p>
+            </div>
+            </div>
+            <!-- Login -->
+            <div class="bg-gray-800 rounded-lg overflow-hidden border border-blue-600/50 hover:shadow-lg hover:shadow-blue-500/30 transition">
+            <img src="./Project/Pictures/Log In.png" alt="Ever Store Login Page" class="w-full h-auto object-cover border-b border-blue-600/50">
+            <div class="p-4">
+                <h3 class="text-lg font-semibold text-white">Secure Login Module</h3>
+                <p class="text-xs text-gray-500">Project Name: Ever Store System</p>
+                <p class="text-xs text-yellow-400 mt-2">Technologies: Python, DB Sqlite, UI/UX Design</p>
+            </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    </main>
+    
+    <main id="skills-section" class="w-full hidden items-start justify-start px-8 md:px-24">
+        <div class="container mx-auto max-w-6xl">
+            <h1 class="text-3xl md:text-4xl font-extrabold text-blue-400 mb-8">
+                Technical Skills <i class="fas fa-tools ml-3"></i> ----------------------------------
+            </h1>
+            <p class="text-base text-gray-400 mb-8">A detailed breakdown of the languages, frameworks, and tools I use to build projects.</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-20">
+
+                <div class="skills-category-card bg-gray-900 p-5 rounded-lg border border-blue-700/50">
+                    <h3 class="text-xl font-semibold text-white mb-4 border-b border-gray-700 pb-2">
+                        Frontend Development
+                    </h3>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="skill-badge bg-blue-600">HTML</span>
+                        <span class="skill-badge bg-blue-600">CSS</span>
+                        <span class="skill-badge bg-blue-600">JavaScript</span>
+                        <span class="skill-badge bg-blue-600">Responsive Design</span>
+                    </div>
+                </div>
+
+                <div class="skills-category-card bg-gray-900 p-5 rounded-lg border border-blue-700/50">
+                    <h3 class="text-xl font-semibold text-white mb-4 border-b border-gray-700 pb-2">
+                        Backend / Scripting
+                    </h3>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="skill-badge bg-green-600">Python</span>
+                        <span class="skill-badge bg-green-600">PHP (Basic)</span>
+                        <span class="skill-badge bg-green-600">C++ (Basic)</span>
+                    </div>
+                </div>
+
+                <div class="skills-category-card bg-gray-900 p-5 rounded-lg border border-blue-700/50">
+                    <h3 class="text-xl font-semibold text-white mb-4 border-b border-gray-700 pb-2">
+                        Frameworks & Libraries
+                    </h3>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="skill-badge bg-yellow-600">CSS</span>
+                        <span class="skill-badge bg-yellow-600">jQuery</span>
+                        <span class="skill-badge bg-yellow-600">Tkinter (Python)</span>
+                    </div>
+                </div>
+
+                <div class="skills-category-card bg-gray-900 p-5 rounded-lg border border-blue-700/50">
+                    <h3 class="text-xl font-semibold text-white mb-4 border-b border-gray-700 pb-2">
+                        Database
+                    </h3>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="skill-badge bg-red-600">MySQL (Basic)</span>
+                        <span class="skill-badge bg-red-600">SQLite</span>
+                        <span class="skill-badge bg-red-600">SQL Basics</span>
+                    </div>
+                </div>
+
+                <div class="skills-category-card bg-gray-900 p-5 rounded-lg border border-blue-700/50">
+                    <h3 class="text-xl font-semibold text-white mb-4 border-b border-gray-700 pb-2">
+                        Tools & Platforms
+                    </h3>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="skill-badge bg-purple-600">Git / GitHub</span>
+                        <span class="skill-badge bg-purple-600">VS Code</span>
+                        <span class="skill-badge bg-purple-600">Canva</span>
+                        <span class="skill-badge bg-purple-600">CapCut (Editor)</span>
+                        <span class="skill-badge bg-purple-600">XAMPP/WAMP</span>
+                    </div>
+                </div>
+                
+                <div class="skills-category-card bg-gray-900 p-5 rounded-lg border border-blue-700/50">
+                    <h3 class="text-xl font-semibold text-white mb-4 border-b border-gray-700 pb-2">
+                        Concepts & Soft Skills
+                    </h3>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="skill-badge bg-indigo-600">UI/UX Principles</span>
+                        <span class="skill-badge bg-indigo-600">Problem-Solving</span>
+                        <span class="skill-badge bg-indigo-600">Team Collaboration</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <main id="certificate-section" class="w-full hidden items-start justify-start px-8 md:px-24">
+        <div class="container mx-auto max-w-6xl">
+
+            <h1 class="text-3xl md:text-4xl font-extrabold text-blue-400 mb-8">
+                Certificates <i class="fas fa-certificate ml-3"></i> ----------------------------------
+            </h1>
+
+            <p class="text-base text-gray-400 mb-10">
+                Professional trainings and certifications that support my technical and academic background.
+            </p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                <!-- Certificate 1 -->
+                <div class="bg-gray-900 rounded-lg border border-blue-700/50 overflow-hidden hover:shadow-lg hover:shadow-blue-500/30 transition">
+                    <img src="./Certificates/book keeping.jpg"
+                        alt="Bookkeeping Certificate"
+                        class="w-full h-56 object-contain bg-white p-4"
+                        onclick="openCertificate(this.src)">
+                    <div class="p-4">
+                        <h3 class="text-white font-semibold text-sm">
+                            Bookkeeping Certification
+                        </h3>
+                    </div>
+                </div>
+
+                <!-- Certificate 2 -->
+                <div class="bg-gray-900 rounded-lg border border-blue-700/50 overflow-hidden hover:shadow-lg hover:shadow-blue-500/30 transition">
+                    <img src="./Certificates/Intro_Prog.jpg"
+                        alt="Introduction to Programming Certificate"
+                        class="w-full h-56 object-contain bg-white p-4"
+                        onclick="openCertificate(this.src)">
+                    <div class="p-4">
+                        <h3 class="text-white font-semibold text-sm">
+                            Introduction to Programming
+                        </h3>
+                    </div>
+                </div>
+
+                <!-- Certificate 3 -->
+                <div class="bg-gray-900 rounded-lg border border-blue-700/50 overflow-hidden hover:shadow-lg hover:shadow-blue-500/30 transition">
+                    <img src="./Certificates/Intro_VS.jpg"
+                        alt="Introduction to Visual Studio Certificate"
+                        class="w-full h-56 object-contain bg-white p-4"
+                        onclick="openCertificate(this.src)">
+                    <div class="p-4">
+                        <h3 class="text-white font-semibold text-sm">
+                            Introduction to Visual Studio
+                        </h3>
+                    </div>
+                </div>
+
+                <!-- Certificate 4 -->
+                <div class="bg-gray-900 rounded-lg border border-blue-700/50 overflow-hidden hover:shadow-lg hover:shadow-blue-500/30 transition">
+                    <img src="./Certificates/web development.png"
+                        alt="Web Development Certificate"
+                        class="w-full h-56 object-contain bg-white p-4"
+                        onclick="openCertificate(this.src)">
+                    <div class="p-4">
+                        <h3 class="text-white font-semibold text-sm">
+                            Web Development
+                        </h3>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Certificate Modal -->
+    <div id="certificateModal"
+        class="fixed inset-0 bg-black/90 hidden items-center justify-center z-[999]">
+
+        <button onclick="closeCertificate()"
+                class="absolute top-6 right-8 text-white text-4xl font-bold hover:text-blue-400">
+            &times;
+        </button>
+
+        <img id="certificateModalImage"
+            src=""
+            alt="Certificate Preview"
+            class="max-w-[90%] max-h-[90%] object-contain border-4 border-blue-500 rounded-lg shadow-2xl">
+    </div>
+
+    <main id="contact-section" class="w-full flex items-start justify-start px-8 md:px-24">
+        <div class="container mx-auto max-w-6xl"> 
+            <h1 class="text-3xl md:text-4xl font-extrabold text-blue-400 mb-12">
+                Contact Me <i class="fas fa-handshake ml-3"></i> ----------------------------------------
+            </h1>
+
+            <div class="flex flex-col md:flex-row gap-12">
+                
+                <div class="w-full md:w-2/3 bg-gray-900 p-8 rounded-xl border border-blue-500/50 shadow-2xl">
+                    <h2 class="text-2xl font-bold text-white mb-6">Send Me a Message</h2>
+                    
+                    <form id="contactForm" 
+                          action="https://formspree.io/f/myznjpwj" 
+                          method="POST" 
+                          target="_blank" 
+                          onsubmit="submitAndClear(event)" 
+                          class="space-y-6">
+                        
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-300 mb-2">Name</label>
+                            <input type="text" id="name" name="Name" required
+                                class="contact-input w-full px-4 py-3 rounded-lg text-base"
+                                placeholder="Your Full Name">
+                        </div>
+
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-300 mb-2">Email</label>
+                            <input type="email" id="email" name="_replyto" required
+                                class="contact-input w-full px-4 py-3 rounded-lg text-base"
+                                placeholder="name@example.com">
+                        </div>
+
+                        <div>
+                            <label for="comment" class="block text-sm font-medium text-gray-300 mb-2">Comment / Message</label>
+                            <textarea id="comment" name="Message" rows="6" required
+                                class="contact-textarea w-full px-4 py-3 rounded-lg text-base resize-none"
+                                placeholder="I'd love to discuss a project with you..."></textarea>
+                        </div>
+
+                        <button type="submit"
+                            class="w-full px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 hover:scale-[1.01]">
+                            Send Message <i class="fas fa-paper-plane ml-2"></i>
+                        </button>
+                    </form>
+                </div>
+
+                <div class="w-full md:w-1/3 bg-gray-900 p-8 rounded-xl border border-blue-500/50 shadow-2xl flex flex-col items-center">
+                    <h2 class="text-2xl font-bold text-white mb-6">Find Me on Socials</h2>
+                    <p class="text-gray-400 text-center mb-8">Connect with me for quicker responses or to see my updates.</p>
+
+                    <div class="flex flex-col space-y-5 w-full">
+                        
+                        <a href="https://github.com/zekalia-code" target="_blank" class="flex items-center space-x-4 p-3 bg-gray-800 rounded-lg hover:bg-gray-700 transition duration-200 group">
+                            <i class="fab fa-github fa-2x text-gray-400 group-hover:text-white transition-colors"></i>
+                            <span class="text-lg font-medium text-white">GitHub</span>
+                            <i class="fas fa-external-link-alt ml-auto text-gray-500 group-hover:text-blue-400 text-sm"></i>
+                        </a>
+
+                        <a href="https://www.facebook.com/z3kalia/" target="_blank" class="flex items-center space-x-4 p-3 bg-gray-800 rounded-lg hover:bg-gray-700 transition duration-200 group">
+                            <i class="fab fa-facebook-f fa-2x text-gray-400 group-hover:text-[#3b5998] transition-colors"></i>
+                            <span class="text-lg font-medium text-white">Facebook</span>
+                            <i class="fas fa-external-link-alt ml-auto text-gray-500 group-hover:text-blue-400 text-sm"></i>
+                        </a>
+                        
+                        <a href="mailto:neilmntsns@gmail.com" target="_blank" class="flex items-center space-x-4 p-3 bg-gray-800 rounded-lg hover:bg-gray-700 transition duration-200 group">
+                            <i class="far fa-envelope fa-2x text-gray-400 group-hover:text-[#DB4437] transition-colors"></i>
+                            <span class="text-lg font-medium text-white">Gmail</span>
+                            <i class="fas fa-external-link-alt ml-auto text-gray-500 group-hover:text-blue-400 text-sm"></i>
+                        </a>
+                        
+                        <a href="https://www.instagram.com/human_fist_248/" target="_blank" class="flex items-center space-x-4 p-3 bg-gray-800 rounded-lg hover:bg-gray-700 transition duration-200 group">
+                            <i class="fab fa-instagram fa-2x text-gray-400 group-hover:text-[#E1306C] transition-colors"></i>
+                            <span class="text-lg font-medium text-white">Instagram</span>
+                            <i class="fas fa-external-link-alt ml-auto text-gray-500 group-hover:text-blue-400 text-sm"></i>
+                        </a>
+
+                        <a href="https://t.me/Zekalia" target="_blank" class="flex items-center space-x-4 p-3 bg-gray-800 rounded-lg hover:bg-gray-700 transition duration-200 group">
+                            <i class="fab fa-telegram-plane fa-2x text-gray-400 group-hover:text-[#0088cc] transition-colors"></i>
+                            <span class="text-lg font-medium text-white">Telegram</span>
+                            <i class="fas fa-external-link-alt ml-auto text-gray-500 group-hover:text-blue-400 text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="./script.js"></script>
+
+</body>
+</html>
