@@ -1,828 +1,371 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Neil Montesines - Portfolio</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <link rel="stylesheet" href="./style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Neil Montesines — IT graduate and developer building web, desktop, mobile, AI and automation applications.">
+  <meta name="theme-color" content="#07070a">
+  <title>Neil Montesines — Developer & AI Builder</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- CDN libraries. The page still renders if the animation libraries fail to load. -->
+  <script src="https://cdn.jsdelivr.net/npm/three@0.179.1/build/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
 </head>
+<body>
+  <div class="noise"></div>
+  <div class="cursor-dot"></div>
+  <div class="cursor-ring"></div>
 
-<body class="bg-black text-gray-100">
-    <nav id="desktop-nav" class="fixed top-8 right-4 z-50 hidden md:block">
-        <div class="bg-black rounded-xl shadow-lg p-2 md:p-4">
-            <ul class="flex md:flex-row space-y-2 md:space-y-0 md:space-x-4">
-                <li>
-                    <a href="#" onclick="showPage('home-section')" id="home-link" class="link text-blue-500 active-underline font-medium py-2 px-3 rounded-md transition-colors duration-200">Home</a>
-                </li>
-                <li>
-                    <a href="#" onclick="showPage('about-section')" id="about-link" class="link text-blue-300 hover:text-blue-500 underline-on-hover font-medium py-2 px-3 rounded-md transition-colors duration-200">About</a>
-                </li>
-                <li>
-                    <a href="#" onclick="showPage('project-section')" id="project-link" class="link text-blue-300 hover:text-blue-500 underline-on-hover font-medium py-2 px-3 rounded-md transition-colors duration-200">Project</a>
-                </li>
-                <li>
-                    <a href="#" onclick="showPage('skills-section')" id="skills-link" class="link text-blue-300 hover:text-blue-500 underline-on-hover font-medium py-2 px-3 rounded-md transition-colors duration-200">Skills</a>
-                </li>
-                <li>
-                    <a href="#"
-                    onclick="showPage('certificate-section')"
-                    id="certificate-link"
-                    class="link text-blue-300 hover:text-blue-500 underline-on-hover font-medium py-2 px-3 rounded-md transition-colors duration-200">
-                        Certificate
-                    </a>
-                </li>
-                <li>
-                    <a href="#" onclick="showPage('contact-section')" id="contact-link" class="link text-blue-300 hover:text-blue-500 underline-on-hover font-medium py-2 px-3 rounded-md transition-colors duration-200">Contact</a>
-                </li>
-                <li>
-                    <a href="./Resume/Montesines_Neil_Resume.pdf" target="_blank" download="Montesines_Neil_Resume.pdf" id="download-resume-link" class="inline-block px-4 py-2 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 transition duration-200">
-                        Download Resume &rarr;
-                    </a>
-                </li>
-            </ul>
-        </div>
+  <div class="loader" id="loader" aria-hidden="true">
+    <div class="loader-mark">Z</div>
+    <div class="loader-copy">
+      <span>NEIL MONTESINES</span>
+      <strong id="loaderPercent">0%</strong>
+    </div>
+    <div class="loader-bar"><span id="loaderBar"></span></div>
+  </div>
+
+  <header class="navbar" id="navbar">
+    <a class="brand magnetic" href="#home" aria-label="Neil Montesines home">
+      <span class="brand-z">Z</span><span>NEIL</span><i>.</i>
+    </a>
+
+    <nav class="desktop-nav" aria-label="Primary navigation">
+      <a href="#about">About</a>
+      <a href="#resume">Resume</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#journey">Journey</a>
+      <a href="#contact">Contact</a>
     </nav>
-    
-    <div class="fixed top-6 right-6 z-50 md:hidden flex items-center space-x-4">
-        <a href="./Resume/Montesines_Neil_Resume.pdf" target="_blank" download="Montesines_Neil_Resume.pdf" class="inline-block px-4 py-2 bg-blue-600 text-white text-xs font-semibold rounded-lg shadow-md hover:bg-blue-700 transition duration-200">
-            Resume
-        </a>
-        <div id="hamburger-menu" class="hamburger-icon cursor-pointer z-50 p-2 rounded-full bg-black/50" onclick="toggleMobileMenu()">
-            <span></span>
-            <span></span>
-            <span></span>
+
+    <a class="nav-cta magnetic" href="#contact">Let's talk <span>↗</span></a>
+    <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open navigation" aria-expanded="false">
+      <span></span><span></span>
+    </button>
+  </header>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#about">About</a>
+    <a href="#resume">Resume</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#journey">Journey</a>
+    <a href="#contact">Contact</a>
+  </div>
+
+  <main>
+    <section class="hero" id="home">
+      <canvas id="heroCanvas" aria-hidden="true"></canvas>
+      <div class="hero-grid"></div>
+      <div class="hero-orb orb-one"></div>
+      <div class="hero-orb orb-two"></div>
+
+      <div class="hero-content shell">
+        <div class="hero-copy">
+          <div class="availability reveal-up"><span></span> AVAILABLE FOR OPPORTUNITIES</div>
+          <p class="hero-kicker reveal-up">IT GRADUATE · DEVELOPER · AI BUILDER</p>
+          <h1 class="hero-title">
+            <span class="reveal-line">Building digital</span>
+            <span class="reveal-line gradient">experiences</span>
+            <span class="reveal-line">that move.</span>
+          </h1>
+          <p class="hero-description reveal-up">
+            I'm Neil Montesines, an IT graduate and developer building web, desktop, mobile,
+            AI-assisted and automation-powered applications.
+          </p>
+          <div class="hero-actions reveal-up">
+            <a class="button button-primary magnetic" href="#projects">Explore projects <span>↓</span></a>
+            <a class="button magnetic" href="#contact">Contact me <span>↗</span></a>
+            <a class="button magnetic" href="#resume">View resume <span>↗</span></a>
+          </div>
+          <div class="hero-tags reveal-up">
+            <span>01 Developer</span>
+            <span>02 Problem Solver</span>
+            <span>03 AI Enthusiast</span>
+          </div>
         </div>
+
+        <div class="hero-hud reveal-up">
+          <span class="hud-dot"></span>
+          <strong>INTERACTIVE / 3D</strong>
+          <small>MOVE YOUR CURSOR · SCROLL TO EXPLORE</small>
+        </div>
+      </div>
+
+      <div class="scroll-indicator"><span></span> SCROLL</div>
+    </section>
+
+    <section class="section about" id="about">
+      <div class="shell split-layout">
+        <div class="section-heading reveal-up">
+          <span class="section-number">01 / ABOUT</span>
+          <h2>More than<br><em>just code.</em></h2>
+        </div>
+        <div class="about-copy reveal-up">
+          <p class="lead">I like building things that are useful, interactive, and easy to understand.</p>
+          <p>My background is in Information Technology, with hands-on experience across Python, PHP/MySQL, Flutter, Java, JavaScript, SQL and interactive web development.</p>
+          <p>I also use modern AI and automation tools to prototype faster, solve problems, connect workflows and turn ideas into working applications.</p>
+          <p>Outside development, I enjoy gaming, simple video editing, exploring new places, anime, K-dramas, discovering new music and coffee.</p>
+          <div class="facts">
+            <div><small>BASE</small><strong>Philippines</strong></div>
+            <div><small>FOCUS</small><strong>Software · AI · Automation</strong></div>
+            <div><small>APPROACH</small><strong>Build → Test → Improve</strong></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section resume-section" id="resume">
+      <div class="shell">
+        <div class="section-heading centered reveal-up">
+          <span class="section-number">02 / RESUME</span>
+          <h2>My professional <em>snapshot.</em></h2>
+          <p>A concise view of my education, technical background, interests and certifications.</p>
+        </div>
+
+        <div class="resume-grid">
+          <article class="resume-card resume-summary reveal-up">
+            <span class="resume-label">PROFILE</span>
+            <h3>Neil Montesines</h3>
+            <p>IT graduate and aspiring developer focused on building practical web, desktop and mobile applications. I combine programming fundamentals with AI-assisted development and automation to prototype, improve and ship useful solutions.</p>
+            <div class="resume-actions"><a class="button button-primary magnetic" href="resume.html">Open resume <span>↗</span></a><button class="button magnetic" type="button" onclick="window.print()">Print / Save PDF <span>↗</span></button></div>
+          </article>
+
+          <article class="resume-card reveal-up">
+            <span class="resume-label">EDUCATION</span>
+            <div class="resume-entry"><span>2022 — 2025</span><div><h3>BS Information Technology</h3><p>Jesus Reigns Christian College</p></div></div>
+            <div class="resume-entry"><span>2020 — 2022</span><div><h3>ABM</h3><p>Jesus Reigns Christian Academy</p></div></div>
+            <div class="resume-entry"><span>2016 — 2020</span><div><h3>Junior High School</h3><p>Manuel A. Roxas High School</p></div></div>
+            <div class="resume-entry"><span>2010 — 2016</span><div><h3>Elementary</h3><p>Fernando Maria Guerrero Elementary School</p></div></div>
+          </article>
+
+          <article class="resume-card reveal-up">
+            <span class="resume-label">PROFESSIONAL INTERESTS</span>
+            <div class="tag-list"><span>Clean Code</span><span>Emerging Frameworks</span><span>UX</span><span>Data Structures</span><span>Web Security</span><span>Cloud Computing</span><span>Game Development</span></div>
+          </article>
+
+          <article class="resume-card reveal-up">
+            <span class="resume-label">CERTIFICATES</span>
+            <div class="cert-list">
+              <span>Bookkeeping Certification</span><span>Introduction to Programming</span><span>Introduction to Visual Studio</span><span>Web Development</span><span>Career and Freelancing Certification</span><span>Desktop Build Certification</span><span>Windows 10 Pro Basic Certification</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section skills-section" id="skills">
+      <div class="shell">
+        <div class="section-heading centered reveal-up">
+          <span class="section-number">03 / TOOLKIT</span>
+          <h2>Tools I <em>build with.</em></h2>
+          <p>Programming, application development, AI-assisted development and automation tools I use across projects.</p>
+        </div>
+
+        <div class="skill-groups">
+          <div class="skill-group reveal-up">
+            <div class="group-label">DEVELOPMENT</div>
+            <div class="skill-grid">
+              <article class="skill-card magnetic-card"><span class="skill-icon">PY</span><h3>Python</h3><p>Desktop apps, automation, reporting and AI workflows.</p></article>
+              <article class="skill-card magnetic-card"><span class="skill-icon">JS</span><h3>JavaScript</h3><p>Interactive interfaces, browser applications and animation.</p></article>
+              <article class="skill-card magnetic-card"><span class="skill-icon">PHP</span><h3>PHP / MySQL</h3><p>Web systems, CRUD applications and relational databases.</p></article>
+              <article class="skill-card magnetic-card"><span class="skill-icon">FL</span><h3>Flutter / Dart</h3><p>Cross-platform mobile interfaces and prototypes.</p></article>
+              <article class="skill-card magnetic-card"><span class="skill-icon">JV</span><h3>Java</h3><p>Object-oriented programming and application projects.</p></article>
+              <article class="skill-card magnetic-card"><span class="skill-icon">3D</span><h3>Three.js</h3><p>WebGL, 3D scenes and interactive visual experiences.</p></article>
+            </div>
+          </div>
+
+          <div class="skill-group reveal-up">
+            <div class="group-label">AI + AUTOMATION</div>
+            <div class="tool-cloud">
+              <span class="tool-chip featured">Lovable</span>
+              <span class="tool-chip featured">ChatGPT</span>
+              <span class="tool-chip featured">Gemini</span>
+              <span class="tool-chip featured">Make</span>
+              <span class="tool-chip">AI-assisted development</span>
+              <span class="tool-chip">Prompt engineering</span>
+              <span class="tool-chip">Workflow automation</span>
+              <span class="tool-chip">Rapid prototyping</span>
+              <span class="tool-chip">API integration</span>
+              <span class="tool-chip">Git / GitHub</span>
+              <span class="tool-chip">VS Code</span>
+              <span class="tool-chip">XAMPP / phpMyAdmin</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section projects-section" id="projects">
+      <div class="shell">
+        <div class="section-heading project-heading reveal-up">
+          <span class="section-number">04 / SELECTED WORK</span>
+          <h2>Things I've <em>built.</em></h2>
+          <p>Systems, apps and experiments built through school, personal projects and AI-assisted development.</p>
+        </div>
+
+        <div class="projects-list">
+          <article class="project-card project-purple reveal-up">
+            <div class="project-index">01</div>
+            <div class="project-info">
+              <span class="project-type">DESKTOP APPLICATION</span>
+              <h3>Smart Grocery POS</h3>
+              <p>Real-time inventory and sales management with barcode scanning, supplier restock logic, sales tracking and PDF receipts.</p>
+              <div class="project-stack"><span>Python</span><span>Tkinter</span><span>SQLite</span><span>ReportLab</span></div>
+            </div>
+            <div class="project-visual pos-visual" aria-hidden="true">
+              <div class="window-bar"><i></i><i></i><i></i></div>
+              <div class="pos-layout"><div class="mini-sidebar"></div><div class="mini-panel"><b></b><b></b><b></b><div class="mini-chart"></div></div></div>
+            </div>
+          </article>
+
+          <article class="project-card project-cyan reveal-up">
+            <div class="project-index">02</div>
+            <div class="project-info">
+              <span class="project-type">WEB APPLICATION</span>
+              <h3>FoodVibes</h3>
+              <p>A PHP/MySQL food ordering platform with product browsing, order processing and database management.</p>
+              <div class="project-stack"><span>PHP</span><span>MySQL</span><span>JavaScript</span><span>HTML/CSS</span></div>
+            </div>
+            <div class="project-visual food-visual" aria-hidden="true"><span>FOOD</span><strong>VIBES</strong><i>ORDER / ENJOY / REPEAT</i></div>
+          </article>
+
+          <article class="project-card project-blue reveal-up">
+            <div class="project-index">03</div>
+            <div class="project-info">
+              <span class="project-type">MOBILE APPLICATION</span>
+              <h3>CRM Application</h3>
+              <p>Flutter-based CRM interface with structured data, dashboards and reusable components.</p>
+              <div class="project-stack"><span>Flutter</span><span>Dart</span><span>UI</span></div>
+            </div>
+            <div class="project-visual phone-visual" aria-hidden="true"><div class="phone-screen"><small>CRM DASHBOARD</small><b></b><b></b><div></div><i></i><i></i></div></div>
+          </article>
+
+          <article class="project-card project-pink reveal-up">
+            <div class="project-index">04</div>
+            <div class="project-info">
+              <span class="project-type">INTERACTIVE EXPERIMENT</span>
+              <h3>3D School Quiz</h3>
+              <p>Browser game exploring Three.js, 3D environments, movement and interactive quiz mechanics.</p>
+              <div class="project-stack"><span>Three.js</span><span>JavaScript</span><span>WebGL</span></div>
+            </div>
+            <div class="project-visual cube-visual" aria-hidden="true"><div class="cube3d"><span></span><span></span><span></span><span></span><span></span><span></span></div></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section archive-section" id="more-projects">
+      <div class="shell">
+        <div class="section-heading centered reveal-up">
+          <span class="section-number">04 / MORE WORK</span>
+          <h2>More things I've <em>made.</em></h2>
+          <p>Smaller applications and experiments from my earlier portfolio.</p>
+        </div>
+        <div class="mini-project-grid">
+          <article class="mini-project reveal-up"><span>01</span><h3>Weather Lookup</h3><p>Responsive weather application using JavaScript, HTML/CSS and OpenWeatherMap API.</p><small>JavaScript · API · HTML/CSS</small></article>
+          <article class="mini-project reveal-up"><span>02</span><h3>Reaction Timer Game</h3><p>A browser game designed to test player response time using JavaScript logic.</p><small>JavaScript · HTML/CSS</small></article>
+          <article class="mini-project reveal-up"><span>03</span><h3>Expense Tracker</h3><p>Personal finance application for income, expenses, balance tracking and analytics.</p><small>Python · Tkinter · SQLite</small></article>
+          <article class="mini-project reveal-up"><span>04</span><h3>File Organizer</h3><p>Python automation utility that organizes files into folders based on file type.</p><small>Python · Automation</small></article>
+          <article class="mini-project reveal-up"><span>05</span><h3>Barcode Generator</h3><p>Desktop utility that generates barcodes dynamically from user input.</p><small>Python · Tkinter</small></article>
+          <article class="mini-project reveal-up"><span>06</span><h3>Notes & To-Do Apps</h3><p>Simple productivity tools for persistent notes and daily task tracking.</p><small>Python · SQLite</small></article>
+          <article class="mini-project reveal-up"><span>07</span><h3>Budget Manager</h3><p>Finance tool for allocating budgets and controlling monthly spending limits.</p><small>Python · SQLite</small></article>
+          <article class="mini-project reveal-up"><span>08</span><h3>Calculator</h3><p>A lightweight desktop calculator for basic arithmetic operations.</p><small>Python</small></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section automation-section">
+      <div class="shell automation-layout">
+        <div class="section-heading reveal-up">
+          <span class="section-number">05 / AI + AUTOMATION</span>
+          <h2>From idea<br>to <em>workflow.</em></h2>
+        </div>
+        <div class="automation-copy reveal-up">
+          <p class="lead">I don't treat AI as a replacement for development. I use it as a development multiplier.</p>
+          <div class="workflow">
+            <div><span>01</span><strong>IDEA</strong><small>Define the problem</small></div>
+            <b>→</b>
+            <div><span>02</span><strong>AI</strong><small>Prototype & iterate</small></div>
+            <b>→</b>
+            <div><span>03</span><strong>BUILD</strong><small>Code & integrate</small></div>
+            <b>→</b>
+            <div><span>04</span><strong>AUTOMATE</strong><small>Connect workflows</small></div>
+          </div>
+          <div class="automation-tools"><span>Lovable</span><span>ChatGPT</span><span>Gemini</span><span>Make</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section journey-section" id="journey">
+      <div class="shell split-layout">
+        <div class="section-heading reveal-up">
+          <span class="section-number">06 / JOURNEY</span>
+          <h2>A timeline of<br><em>learning.</em></h2>
+        </div>
+        <div class="timeline">
+          <article class="timeline-item reveal-up"><span>2026</span><div><small>AI / SOFTWARE</small><h3>AI-assisted development</h3><p>Exploring AI application development, rapid prototyping, automation and modern development workflows.</p></div></article>
+          <article class="timeline-item reveal-up"><span>2025</span><div><small>APPLICATION DEVELOPMENT</small><h3>Web, desktop and mobile</h3><p>Expanded practical experience through PHP/MySQL, Python, Flutter and Java projects.</p></div></article>
+          <article class="timeline-item reveal-up"><span>2024</span><div><small>FOUNDATIONS</small><h3>Building systems from scratch</h3><p>Developed school and personal projects involving databases, web applications and software fundamentals.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section life-section">
+      <div class="shell split-layout">
+        <div class="section-heading reveal-up"><span class="section-number">07 / BEYOND CODE</span><h2>Creative <em>side.</em></h2></div>
+        <div class="life-grid reveal-up">
+          <article><span>EDITING</span><h3>Simple Video Editing</h3><p>CapCut on PC/mobile and basic photo editing for project showcases and creative content.</p></article>
+          <article><span>MEDIA</span><h3>Blog & Enrollment Showcases</h3><p>Short-form editing projects focused on visual presentation, pacing and clean communication.</p></article>
+          <article><span>HOBBIES</span><h3>Gaming · Anime · K-Drama</h3><p>Interests that keep me creative and give me ideas for interactive experiences.</p></article>
+          <article><span>PERSONAL</span><h3>Music · Travel · Coffee</h3><p>Discovering new music, exploring new places and coffee brewing/tasting.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact-section" id="contact">
+      <div class="shell contact-layout">
+        <div class="section-heading reveal-up">
+          <span class="section-number">08 / CONTACT</span>
+          <h2>Let's build<br><em>something.</em></h2>
+          <p>Have a project, opportunity or idea? Send me a message.</p>
+          <div class="contact-links">
+            <a href="https://github.com/zekalia-code" target="_blank" rel="noopener">GitHub ↗</a>
+            <a href="https://www.facebook.com/z3kalia/" target="_blank" rel="noopener noreferrer"> Facebook ↗ </a>
+
+          </div>
+        </div>
+
+        <!-- Replace YOUR_FORM_ID with your Formspree form endpoint ID. -->
+        <form class="contact-form reveal-up" id="contactForm" action="https://formspree.io/f/mzepqnwv" method="POST">
+          <input type="hidden" name="_subject" value="Portfolio contact — Neil Montesines">
+          <label>Name<input name="name" autocomplete="name" required></label>
+          <label>Email<input name="email" type="email" autocomplete="email" required></label>
+          <label>Subject<input name="subject" required></label>
+          <label>Message<textarea name="message" rows="6" required></textarea></label>
+          <button class="button button-primary magnetic" type="submit">Send message <span>↗</span></button>
+          <p class="form-status" id="formStatus" role="status"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="shell footer-inner">
+      <span>© <span id="year"></span> Neil Montesines</span>
+      <span>BUILT WITH CODE + CURIOSITY</span><a href="resume.html">RESUME ↗</a>
+      <a href="#home">BACK TO TOP ↑</a>
     </div>
+  </footer>
 
-    <div id="mobile-nav" class="mobile-nav-menu p-8 pt-24 flex flex-col items-center space-y-8 md:hidden">
-        <a href="#" onclick="showPage('home-section'); toggleMobileMenu();" class="text-2xl font-medium text-blue-500 hover:text-white transition duration-200">Home</a>
-        <a href="#" onclick="showPage('about-section'); toggleMobileMenu();" class="text-2xl font-medium text-blue-300 hover:text-white transition duration-200">About</a>
-        <a href="#" onclick="showPage('project-section'); toggleMobileMenu();" class="text-2xl font-medium text-blue-300 hover:text-white transition duration-200">Project</a>
-        <a href="#" onclick="showPage('skills-section'); toggleMobileMenu();" class="text-2xl font-medium text-blue-300 hover:text-white transition duration-200">Skills</a>
-        <a href="#" onclick="showPage('contact-section'); toggleMobileMenu();" class="text-2xl font-medium text-blue-300 hover:text-white transition duration-200">Contact</a>
-        <a href="#" onclick="showPage('certificate-section'); toggleMobileMenu();" class="text-2xl font-medium text-blue-300 hover:text-white transition duration-200"> Certificate </a>
-    </div>
-
-    <main id="home-section" class="min-h-screen w-full flex items-center justify-center px-4 pt-36 md:pt-28 pb-12">
-        <div class="container mx-auto flex flex-col md:flex-row-reverse items-center gap-8 md:gap-16 max-w-6xl">
-            
-            <!-- Profile Picture -->
-            <div class="w-full md:w-1/2 flex justify-center p-4 mt-8 md:mt-0">
-            <img class="w-40 h-40 sm:w-52 sm:h-52 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-full object-cover glowing-shadow" 
-                src="./profile/pic.jfif" 
-                alt="Your Profile Picture">
-            </div>
-
-            <!-- About Section -->
-            <div class="w-full md:w-1/2 text-center md:text-left px-2">
-            <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-4 relative inline-block">
-                Neil Montesines
-                <span class="name-underline"></span>
-            </h1>
-            
-            <p class="text-sm sm:text-base md:text-lg text-gray-300 leading-relaxed max-w-2xl mx-auto md:mx-0 mb-6">
-                I'm a passionate developer and a recent graduate with a Bachelor of Science in Information Technology (Class of 2025).
-                My portfolio showcases the hands-on skills I've gained in web development through various academic and personal projects.
-                While I'm dedicated to building clean, functional applications, I also enjoy using my simple editing skills to create engaging content and project showcases.
-                My long-term goal is to apply my coding and problem-solving abilities to new creative challenges, and I'm excited to use my foundation to make games soon.
-            </p>
-
-            <!-- Social Links -->
-            <div class="flex flex-wrap justify-center md:justify-start gap-6 mt-4">
-                <a href="https://github.com/zekalia-code" target="_blank" aria-label="GitHub Profile">
-                <i class="fab fa-github fa-2x social-icon"></i>
-                </a>
-                <a href="https://www.facebook.com/z3kalia/" target="_blank" aria-label="Facebook Profile">
-                <i class="fab fa-facebook-f fa-2x social-icon"></i>
-                </a>
-                <a href="mailto:neilmntsns@gmail.com" target="_blank" aria-label="Email Link">
-                <i class="far fa-envelope fa-2x social-icon"></i>
-                </a>
-                <a href="https://www.instagram.com/human_fist_248/" target="_blank" aria-label="Instagram Profile">
-                <i class="fab fa-instagram fa-2x social-icon"></i>
-                </a>
-                <a href="https://t.me/Zekalia" target="_blank" aria-label="Telegram Profile">
-                <i class="fab fa-telegram-plane fa-2x social-icon"></i>
-                </a>
-            </div>
-            </div>
-            
-        </div>
-    </main>
-
-    <main id="about-section" class="h-screen w-full hidden items-start justify-start px-8 md:pl-24"> 
-        <div class="container text-left max-w-6xl"> 
-            <h1 class="text-3xl md:text-4xl font-extrabold text-blue-400 mb-8">
-                About Me ----------------------------------------------------------
-            </h1>
-
-            <div class="flex flex-col-reverse md:flex-row gap-8 items-start mb-12">
-                
-                <div class="w-full md:w-3/5 space-y-6">
-                    <p class="text-lg text-gray-300 leading-relaxed text-justify">
-                        I'm Neil Montesines, a fresh IT Graduate and an aspiring developer 
-                        who specializes in bringing digital ideas to life.
-                        I focus on combining strong front-end architecture (HTML, CSS/Tailwind, JavaScript) with robust logic to create web applications that are both intuitive and high-performing.
-                        I thrive on the challenge of transforming complex problems into elegant, user-centric solutions.
-                    </p>
-
-                    <p class="text-lg text-gray-300 leading-relaxed text-justify">
-                        My core philosophy is that every line of code should serve a clear purpose. 
-                        This dedication to clean, scalable development is what drives my projects.
-                        As I transition from academic projects into the professional world, I’m committed to continuous learning—a journey that is currently leading me toward exploring game development as my next creative frontier.
-                        I’m eager to contribute my problem-solving skills and energy to a challenging team environment.
-                    </p>
-
-                    <a href="#" onclick="showPage('contact-section')" class="inline-block mt-4 px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 transition duration-200">
-                        Let's Connect and Collaborate &rarr;
-                    </a>
-                </div>
-
-                <div class="w-full md:w-2/5 flex justify-center md:justify-end">
-                    <img 
-                        class="w-48 h-48 md:w-64 md:h-64 object-cover rounded-xl glowing-shadow" 
-                        src="./My pictures/1758344323529.jpg" 
-                        alt="Neil Montesines Profile Picture"
-                    >
-                </div>
-                
-            </div>
-            <h2 class="text-xl md:text-2xl font-bold text-blue-300 mt-16 mb-4">
-                Education
-            </h2>
-             <div class="space-y-6">
-
-                <div class="bg-gray-900 p-6 rounded-lg border border-blue-600/70">
-                    <p class="text-lg font-semibold text-gray-200">2022 - 2025</p>
-                    <p class="text-xl font-medium text-white">College</p>
-                    <p class="text-base font-bold text-blue-400">Bachelor of Science in Information Technology (BSIT)</p>
-                    <p class="text-base font-bold text-gray-400">Jesus Reigns Christian College</p>
-                </div>
-
-                <div class="bg-gray-900 p-6 rounded-lg border border-blue-600/70">
-                    <p class="text-lg font-semibold text-gray-200">2020 - 2022</p>
-                    <p class="text-xl font-medium text-white">Senior High School</p>
-                    <p class="text-base font-bold text-blue-400">ABM (Accounting, Business, and Management)</p>
-                    <p class="text-base font-bold text-gray-400">Jesus Reigns Christian Academy</p>
-                </div>
-
-                <div class="bg-gray-900 p-6 rounded-lg border border-blue-600/70">
-                    <p class="text-lg font-semibold text-gray-200">2016 - 2020</p>
-                    <p class="text-xl font-medium text-white">Junior High School</p>
-                    <p class="text-base font-bold text-gray-400">Manuel A. Roxas High School</p>
-                </div>
-
-                <div class="bg-gray-900 p-6 rounded-lg border border-blue-600/70">
-                    <p class="text-lg font-semibold text-gray-200">2010 - 2016</p>
-                    <p class="text-xl font-medium text-white">Elementary School</p>
-                    <p class="text-base font-bold text-gray-400">Fernando Maria Guerrero Elementary School</p>
-                </div>
-
-            </div>
-
-            <h2 class="text-xl md:text-2xl font-bold text-blue-300 mt-16 mb-4">
-                Professional Interests
-            </h2>
-            <p class="text-base text-gray-400 mb-6">The technical and creative fields that fuel my drive for continuous development.</p>
-
-            <div class="bg-gray-900 border border-blue-500 rounded-lg p-4 max-w-4xl text-gray-300 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-
-            <div class="flex flex-col items-center text-center bg-blue-700/70 px-4 py-5 rounded-md border border-blue-500 cursor-default select-none min-h-[120px]">
-                <img src="./about-me/Professional Interest/Coding.jpg" alt="Coding Icon" class="w-10 h-10 object-contain rounded-full mb-2" />
-                <span class="text-sm sm:text-base md:text-lg">Clean Code Architecture</span>
-            </div>
-
-            <div class="flex flex-col items-center text-center bg-blue-700/70 px-4 py-5 rounded-md border border-blue-500 cursor-default select-none min-h-[120px]">
-                <img src="./about-me/Professional Interest/Learning-New-Technology.jpg" alt="Learning Icon" class="w-10 h-10 object-contain rounded-full mb-2" />
-                <span class="text-sm sm:text-base md:text-lg">Emerging Frameworks</span>
-            </div>
-
-            <div class="flex flex-col items-center text-center bg-blue-700/70 px-4 py-5 rounded-md border border-blue-500 cursor-default select-none min-h-[120px]">
-                <img src="./about-me/Professional Interest/UX.jpg" alt="UX Icon" class="w-10 h-10 object-contain rounded-full mb-2" />
-                <span class="text-sm sm:text-base md:text-lg">User Experience (UX)</span>
-            </div>
-
-            <div class="flex flex-col items-center text-center bg-blue-700/70 px-4 py-5 rounded-md border border-blue-500 cursor-default select-none min-h-[120px]">
-                <img src="./about-me/Professional Interest/data.jpg" alt="Data Icon" class="w-10 h-10 object-contain rounded-full mb-2" />
-                <span class="text-sm sm:text-base md:text-lg">Data Structures & Algorithms</span>
-            </div>
-
-            <div class="flex flex-col items-center text-center bg-blue-700/70 px-4 py-5 rounded-md border border-blue-500 cursor-default select-none min-h-[120px]">
-                <img src="./about-me/Professional Interest/web sec.jpg" alt="Security Icon" class="w-10 h-10 object-contain rounded-full mb-2" />
-                <span class="text-sm sm:text-base md:text-lg">Web Security Practices</span>
-            </div>
-
-            <div class="flex flex-col items-center text-center bg-blue-700/70 px-4 py-5 rounded-md border border-blue-500 cursor-default select-none min-h-[120px]">
-                <img src="./about-me/Professional Interest/cloud computing.jpg" alt="Cloud Icon" class="w-10 h-10 object-contain rounded-full mb-2" />
-                <span class="text-sm sm:text-base md:text-lg">Basic Cloud Computing</span>
-            </div>
-
-            </div>
-
-            <h2 class="text-xl md:text-2xl font-bold text-blue-300 mt-16 mb-4">
-                Personal Hobbies & Activities
-            </h2>
-            <p class="text-base text-gray-400 mb-6">Activities I pursue to stay creative, balanced, and ready for new challenges.</p>
-
-            <div class="bg-gray-900 border border-blue-500 rounded-lg p-4 max-w-4xl text-gray-300 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mt-6">
-
-            <div class="flex flex-col items-center text-center bg-blue-700/70 px-4 py-5 rounded-md border border-blue-500 cursor-default select-none min-h-[120px]">
-                <img src="./about-me/Personal Hobbies & Activities/Gaming.jpg" alt="Gaming Icon" class="w-10 h-10 object-contain rounded-full mb-2" />
-                <span class="text-sm sm:text-base md:text-lg">Competitive Gaming</span>
-            </div>
-
-            <div class="flex flex-col items-center text-center bg-blue-700/70 px-4 py-5 rounded-md border border-blue-500 cursor-default select-none min-h-[120px]">
-                <img src="./about-me/Personal Hobbies & Activities/edit.jpg" alt="Video Editing Icon" class="w-10 h-10 object-contain rounded-full mb-2" />
-                <span class="text-sm sm:text-base md:text-lg">Simple Video Editing</span>
-            </div>
-
-            <div class="flex flex-col items-center text-center bg-blue-700/70 px-4 py-5 rounded-md border border-blue-500 cursor-default select-none min-h-[120px]">
-                <img src="./about-me/Personal Hobbies & Activities/Traveling.jpg" alt="Travel Icon" class="w-10 h-10 object-contain rounded-full mb-2" />
-                <span class="text-sm sm:text-base md:text-lg">Exploring New Places</span>
-            </div>
-
-            <div class="flex flex-col items-center text-center bg-blue-700/70 px-4 py-5 rounded-md border border-blue-500 cursor-default select-none min-h-[120px]">
-                <img src="./about-me/Personal Hobbies & Activities/Anime.jpg" alt="Anime Icon" class="w-10 h-10 object-contain rounded-full mb-2" />
-                <span class="text-sm sm:text-base md:text-lg">Anime</span>
-            </div>
-
-            <div class="flex flex-col items-center text-center bg-blue-700/70 px-4 py-5 rounded-md border border-blue-500 cursor-default select-none min-h-[120px]">
-                <img src="./about-me/Personal Hobbies & Activities/K-Drama.jpg" alt="Kdrama Icon" class="w-10 h-10 object-contain rounded-full mb-2" />
-                <span class="text-sm sm:text-base md:text-lg">K-Drama</span>
-            </div>
-
-            <div class="flex flex-col items-center text-center bg-blue-700/70 px-4 py-5 rounded-md border border-blue-500 cursor-default select-none min-h-[120px]">
-                <img src="./about-me/Personal Hobbies & Activities/Music.jpg" alt="Music Icon" class="w-10 h-10 object-contain rounded-full mb-2" />
-                <span class="text-sm sm:text-base md:text-lg">Discovering New Music</span>
-            </div>
-
-            <div class="flex flex-col items-center text-center bg-blue-700/70 px-4 py-5 rounded-md border border-blue-500 cursor-default select-none min-h-[120px] sm:col-span-2 md:col-span-1">
-                <img src="./about-me/Personal Hobbies & Activities/Coffee.jpg" alt="Coffee Icon" class="w-10 h-10 object-contain rounded-full mb-2" />
-                <span class="text-sm sm:text-base md:text-lg">Coffee Brewing / Tasting</span>
-            </div>
-
-            </div>
-        </div>
-    </main>
-
-    <main id="project-section" class="w-full hidden flex-col items-start justify-start px-4 md:px-24 overflow-y-auto">
-        <div class="container mx-auto max-w-6xl">
-            <h1 class="text-3xl md:text-4xl font-extrabold text-blue-400 mb-8">
-            My Projects --------------------------------------------------------
-            </h1>
-
-            <!-- INTRO -->
-            <div id="project-intro" class="project-section-box space-y-4">
-            <h2 class="text-xl md:text-2xl font-bold text-blue-300">
-                Introduction & Overview
-            </h2>
-            <p class="text-lg text-gray-300 leading-relaxed text-justify">
-                This gallery highlights my journey through web development, showcasing academic projects and personal ventures in both code and media. Each piece demonstrates my commitment to clean architecture, intuitive design, and solving real-world problems.
-            </p>
-            <p class="text-lg text-gray-300 leading-relaxed text-justify">
-                You'll find links to live applications, repositories, and video explanations of the goals, challenges, and technologies used in each project. I focus on technologies like HTML/CSS (Tailwind), JavaScript, and basic database integration.
-            </p>
-            <a href="https://github.com/zekalia-code" target="_blank"
-                class="inline-block mt-4 px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 transition duration-200">
-                View GitHub Profile &rarr;
-            </a>
-            </div>
-
-            <!-- VIDEOS -->
-            <div id="project-videos" class="project-section-box space-y-6 mt-10">
-            <h2 class="text-xl md:text-2xl font-bold text-blue-300">
-                Media Projects & Editing Showcases <i class="fas fa-video ml-3"></i>
-            </h2>
-            <p class="text-base text-gray-400">
-                These videos demonstrate my skills in visual presentation, flow, and simple video editing.
-            </p>
-
-            <div class="relative">
-                <div id="video-carousel" class="video-scroll-container flex space-x-6 pb-4">
-
-                <!-- Video 1 -->
-                <div class="video-card w-[300px] bg-gray-900 p-3 rounded-lg border border-blue-700/50">
-                    <div class="video-container">
-                    <video class="w-full rounded-lg custom-video"
-                            controls playsinline preload="metadata" controlslist="nodownload">
-                        <source src="./Project/Video/Blog Teaser.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                    </div>
-                    <h3 class="text-md font-semibold text-white mt-3 mb-1 truncate">Blog teaser</h3>
-                    <p class="text-xs text-gray-500">Tools Used: CapCut (CP/Mobile), Basic Photo Editing</p>
-                </div>
-
-                <!-- Video 2 -->
-                <div class="video-card w-[300px] bg-gray-900 p-3 rounded-lg border border-blue-700/50">
-                    <div class="video-container">
-                    <video class="w-full rounded-lg custom-video"
-                            controls playsinline preload="metadata" controlslist="nodownload">
-                        <source src="./Project/Video/Enrollment.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                    </div>
-                    <h3 class="text-md font-semibold text-white mt-3 mb-1 truncate">Enrollment</h3>
-                    <p class="text-xs text-gray-500">Tools Used: CapCut (CP/Mobile), Basic Photo Editing</p>
-                </div>
-
-                </div>
-
-                <!-- Left / Right Buttons -->
-                <button id="scroll-left-btn"
-                class="absolute top-1/2 -left-10 transform -translate-y-1/2 bg-blue-600 p-2 rounded-full text-white hover:bg-blue-700 transition duration-200">
-                <i class="fas fa-chevron-left"></i>
-                </button>
-
-                <button id="scroll-right-btn"
-                class="absolute top-1/2 -right-10 transform -translate-y-1/2 bg-blue-600 p-2 rounded-full text-white hover:bg-blue-700 transition duration-200">
-                <i class="fas fa-chevron-right"></i>
-                </button>
-                </div>
-            </div>
-
-        <!-- PICTURES -->
-        <div id="project-pictures" class="project-section-box space-y-6 mb-20 mt-10">
-            <h2 class="text-xl md:text-2xl font-bold text-blue-300">
-                Project Screenshots <i class="fas fa-image ml-3"></i>
-            </h2>
-            <p class="text-base text-gray-400">A visual showcase of the user interfaces and functionality of my key development projects.</p>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                
-            <!-- POS -->
-            <div class="bg-gray-800 rounded-lg overflow-hidden border border-blue-600/50 hover:shadow-lg hover:shadow-blue-500/30 transition">
-                <img src="./Project/Pictures/Main dashboard POS.png" alt="Ever Store POS System Dashboard" class="w-full h-auto object-cover border-b border-blue-600/50">
-                <div class="p-4">
-                    <h3 class="text-lg font-semibold text-white">POS Dashboard</h3>
-                    <p class="text-xs text-gray-500">Project Name: Ever Store System</p>
-                    <p class="text-sm text-gray-400 mt-2">
-                        A full-featured point-of-sale dashboard designed to manage products, sales, and transactions efficiently.
-                    </p>
-                    <p class="text-xs text-yellow-400 mt-2">
-                        Technologies: Python (Tkinter), SQLite, API Integration
-                    </p>
-                </div>
-            </div>
-
-            <!-- Weather -->
-            <div class="bg-gray-800 rounded-lg overflow-hidden border border-blue-600/50 hover:shadow-lg hover:shadow-blue-500/30 transition">
-                <img src="./Project/Pictures/Weather App.png" alt="Weather Application Screenshot" class="w-full h-auto object-cover border-b border-blue-600/50">
-                <div class="p-4">
-                    <h3 class="text-lg font-semibold text-white">Weather Lookup</h3>
-                    <p class="text-xs text-gray-500">Project Name: Simple Weather App</p>
-                    <p class="text-sm text-gray-400 mt-2">
-                        A clean and responsive weather application that fetches real-time data based on user input.
-                    </p>
-                    <p class="text-xs text-yellow-400 mt-2">
-                        Technologies: JavaScript, HTML, CSS, OpenWeatherMap API
-                    </p>
-                </div>
-            </div>
-
-            <!-- Click Game -->
-            <div class="bg-gray-800 rounded-lg overflow-hidden border border-blue-600/50 hover:shadow-lg hover:shadow-blue-500/30 transition">
-                <img src="./Project/Pictures/Click the box game.png" alt="Click the Box Game Screenshot" class="w-full h-auto object-cover border-b border-blue-600/50">
-                <div class="p-4">
-                    <h3 class="text-lg font-semibold text-white">Click the Box Game</h3>
-                    <p class="text-xs text-gray-500">Project Name: Reaction Timer Game</p>
-                    <p class="text-sm text-gray-400 mt-2">
-                        A simple reaction-based game designed to test player response time using JavaScript logic.
-                    </p>
-                    <p class="text-xs text-yellow-400 mt-2">
-                        Technologies: Pure JavaScript, HTML, CSS
-                    </p>
-                </div>
-            </div>
-
-            <!-- Login -->
-            <div class="bg-gray-800 rounded-lg overflow-hidden border border-blue-600/50 hover:shadow-lg hover:shadow-blue-500/30 transition">
-                <img src="./Project/Pictures/Log In.png" alt="Ever Store Login Page" class="w-full h-auto object-cover border-b border-blue-600/50">
-                <div class="p-4">
-                    <h3 class="text-lg font-semibold text-white">Secure Login Module</h3>
-                    <p class="text-xs text-gray-500">Project Name: Ever Store System</p>
-                    <p class="text-sm text-gray-400 mt-2">
-                        A secure authentication interface built to manage user access and validate credentials.
-                    </p>
-                    <p class="text-xs text-yellow-400 mt-2">
-                        Technologies: Python, SQLite, UI/UX Design
-                    </p>
-                </div>
-            </div>
-
-            <!-- Expense Tracker -->
-            <div class="bg-gray-800 rounded-lg overflow-hidden border border-blue-600/50 hover:shadow-lg hover:shadow-blue-500/30 transition">
-                <img src="./Project/Pictures/Dashboard_ET.png" alt="Expense Tracker Dashboard" class="w-full h-auto object-cover border-b border-blue-600/50">
-                <div class="p-4">
-                    <h3 class="text-lg font-semibold text-white">Expense Tracker</h3>
-                    <p class="text-xs text-gray-500">Personal Finance Application</p>
-                    <p class="text-sm text-gray-400 mt-2">
-                        A finance management system that tracks income, expenses, and provides insights through analytics.
-                    </p>
-                    <p class="text-xs text-yellow-400 mt-2">
-                        Technologies: Python, Tkinter, SQLite
-                    </p>
-                </div>
-            </div>
-
-            <!-- File Organizer -->
-            <div class="bg-gray-800 rounded-lg overflow-hidden border border-blue-600/50 hover:shadow-lg hover:shadow-blue-500/30 transition">
-                <img src="./Project/Pictures/File Organizer.png" alt="File Organizer App" class="w-full h-auto object-cover border-b border-blue-600/50">
-                <div class="p-4">
-                    <h3 class="text-lg font-semibold text-white">File Organizer</h3>
-                    <p class="text-xs text-gray-500">Automation Utility</p>
-                    <p class="text-sm text-gray-400 mt-2">
-                        An automation script that organizes files into folders based on type to improve productivity.
-                    </p>
-                    <p class="text-xs text-yellow-400 mt-2">
-                        Technologies: Python
-                    </p>
-                </div>
-            </div>
-            <div class="bg-gray-800 rounded-lg overflow-hidden border border-blue-600/50 hover:shadow-lg hover:shadow-blue-500/30 transition">
-                <img src="./Project/Pictures/Add_Expense_ET.png" class="w-full border-b border-blue-600/50">
-                <div class="p-4">
-                    <h3 class="text-lg font-semibold text-white">Add Expense</h3>
-                    <p class="text-xs text-gray-500">Expense Tracker Module</p>
-                    <p class="text-sm text-gray-400 mt-2">
-                        Allows users to record daily expenses with category and amount tracking.
-                    </p>
-                    <p class="text-xs text-yellow-400 mt-2">Python, Tkinter, SQLite</p>
-                </div>
-            </div>
-            <div class="bg-gray-800 rounded-lg overflow-hidden border border-blue-600/50 hover:shadow-lg hover:shadow-blue-500/30 transition">
-                <img src="./Project/Pictures/Add_Income_ET.png" class="w-full border-b border-blue-600/50">
-                <div class="p-4">
-                    <h3 class="text-lg font-semibold text-white">Add Income</h3>
-                    <p class="text-xs text-gray-500">Expense Tracker Module</p>
-                    <p class="text-sm text-gray-400 mt-2">
-                        Tracks income sources to calculate balance and financial summaries.
-                    </p>
-                    <p class="text-xs text-yellow-400 mt-2">Python, Tkinter, SQLite</p>
-                </div>
-            </div>
-            <div class="bg-gray-800 rounded-lg overflow-hidden border border-blue-600/50 hover:shadow-lg hover:shadow-blue-500/30 transition">
-                <img src="./Project/Pictures/Analytics_ET.png" class="w-full border-b border-blue-600/50">
-                <div class="p-4">
-                    <h3 class="text-lg font-semibold text-white">Expense Analytics</h3>
-                    <p class="text-xs text-gray-500">Expense Tracker Feature</p>
-                    <p class="text-sm text-gray-400 mt-2">
-                        Visualizes spending patterns using charts and summarized reports.
-                    </p>
-                    <p class="text-xs text-yellow-400 mt-2">Python, Charts, SQLite</p>
-                </div>
-            </div>
-            <div class="bg-gray-800 rounded-lg overflow-hidden border border-blue-600/50 hover:shadow-lg hover:shadow-blue-500/30 transition">
-                <img src="./Project/Pictures/Barcode Generator.png" class="w-full border-b border-blue-600/50">
-                <div class="p-4">
-                    <h3 class="text-lg font-semibold text-white">Barcode Generator</h3>
-                    <p class="text-xs text-gray-500">Utility Application</p>
-                    <p class="text-sm text-gray-400 mt-2">
-                        Generates barcodes dynamically based on user input for labeling.
-                    </p>
-                    <p class="text-xs text-yellow-400 mt-2">Python, Tkinter</p>
-                </div>
-            </div>
-            <div class="bg-gray-800 rounded-lg overflow-hidden border border-blue-600/50 hover:shadow-lg hover:shadow-blue-500/30 transition">
-                <img src="./Project/Pictures/BM_ET.png" class="w-full border-b border-blue-600/50">
-                <div class="p-4">
-                    <h3 class="text-lg font-semibold text-white">Budget Manager</h3>
-                    <p class="text-xs text-gray-500">Finance Tool</p>
-                    <p class="text-sm text-gray-400 mt-2">
-                        Helps users allocate budgets and control monthly spending limits.
-                    </p>
-                    <p class="text-xs text-yellow-400 mt-2">Python, SQLite</p>
-                </div>
-            </div>
-            <div class="bg-gray-800 rounded-lg overflow-hidden border border-blue-600/50 hover:shadow-lg hover:shadow-blue-500/30 transition">
-                <img src="./Project/Pictures/Calculator.png" class="w-full border-b border-blue-600/50">
-                <div class="p-4">
-                    <h3 class="text-lg font-semibold text-white">Calculator</h3>
-                    <p class="text-xs text-gray-500">Utility App</p>
-                    <p class="text-sm text-gray-400 mt-2">
-                        A simple calculator performing basic arithmetic operations.
-                    </p>
-                    <p class="text-xs text-yellow-400 mt-2">Python</p>
-                </div>
-            </div>
-            <div class="bg-gray-800 rounded-lg overflow-hidden border border-blue-600/50 hover:shadow-lg hover:shadow-blue-500/30 transition">
-                <img src="./Project/Pictures/Note App.png" class="w-full border-b border-blue-600/50">
-                <div class="p-4">
-                    <h3 class="text-lg font-semibold text-white">Notes Application</h3>
-                    <p class="text-xs text-gray-500">Productivity Tool</p>
-                    <p class="text-sm text-gray-400 mt-2">
-                        Allows users to create, edit, and store notes persistently.
-                    </p>
-                    <p class="text-xs text-yellow-400 mt-2">Python, SQLite</p>
-                </div>
-            </div>
-            <div class="bg-gray-800 rounded-lg overflow-hidden border border-blue-600/50 hover:shadow-lg hover:shadow-blue-500/30 transition">
-                <img src="./Project/Pictures/to do apps.png" class="w-full border-b border-blue-600/50">
-                <div class="p-4">
-                    <h3 class="text-lg font-semibold text-white">To-Do App</h3>
-                    <p class="text-xs text-gray-500">Task Management</p>
-                    <p class="text-sm text-gray-400 mt-2">
-                        Manages daily tasks with completion tracking.
-                    </p>
-                    <p class="text-xs text-yellow-400 mt-2">Python</p>
-                </div>
-            </div>
-            </div>
-        </div>
-    </main>
-    
-    <main id="skills-section" class="w-full hidden items-start justify-start px-8 md:px-24">
-        <div class="container mx-auto max-w-6xl">
-            <h1 class="text-3xl md:text-4xl font-extrabold text-blue-400 mb-8">
-                Technical Skills <i class="fas fa-tools ml-3"></i> ----------------------------------
-            </h1>
-            <p class="text-base text-gray-400 mb-8">A detailed breakdown of the languages, frameworks, and tools I use to build projects.</p>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-20">
-
-                <div class="skills-category-card bg-gray-900 p-5 rounded-lg border border-blue-700/50">
-                    <h3 class="text-xl font-semibold text-white mb-4 border-b border-gray-700 pb-2">
-                        Frontend Development
-                    </h3>
-                    <div class="flex flex-wrap gap-3">
-                        <span class="skill-badge bg-blue-600">HTML</span>
-                        <span class="skill-badge bg-blue-600">CSS</span>
-                        <span class="skill-badge bg-blue-600">JavaScript</span>
-                        <span class="skill-badge bg-blue-600">Responsive Design</span>
-                    </div>
-                </div>
-
-                <div class="skills-category-card bg-gray-900 p-5 rounded-lg border border-blue-700/50">
-                    <h3 class="text-xl font-semibold text-white mb-4 border-b border-gray-700 pb-2">
-                        Backend / Scripting
-                    </h3>
-                    <div class="flex flex-wrap gap-3">
-                        <span class="skill-badge bg-green-600">Python</span>
-                        <span class="skill-badge bg-green-600">PHP (Basic)</span>
-                        <span class="skill-badge bg-green-600">C++ (Basic)</span>
-                    </div>
-                </div>
-
-                <div class="skills-category-card bg-gray-900 p-5 rounded-lg border border-blue-700/50">
-                    <h3 class="text-xl font-semibold text-white mb-4 border-b border-gray-700 pb-2">
-                        Frameworks & Libraries
-                    </h3>
-                    <div class="flex flex-wrap gap-3">
-                        <span class="skill-badge bg-yellow-600">CSS</span>
-                        <span class="skill-badge bg-yellow-600">jQuery</span>
-                        <span class="skill-badge bg-yellow-600">Tkinter (Python)</span>
-                    </div>
-                </div>
-
-                <div class="skills-category-card bg-gray-900 p-5 rounded-lg border border-blue-700/50">
-                    <h3 class="text-xl font-semibold text-white mb-4 border-b border-gray-700 pb-2">
-                        Database
-                    </h3>
-                    <div class="flex flex-wrap gap-3">
-                        <span class="skill-badge bg-red-600">MySQL (Basic)</span>
-                        <span class="skill-badge bg-red-600">SQLite</span>
-                        <span class="skill-badge bg-red-600">SQL Basics</span>
-                    </div>
-                </div>
-
-                <div class="skills-category-card bg-gray-900 p-5 rounded-lg border border-blue-700/50">
-                    <h3 class="text-xl font-semibold text-white mb-4 border-b border-gray-700 pb-2">
-                        Tools & Platforms
-                    </h3>
-                    <div class="flex flex-wrap gap-3">
-                        <span class="skill-badge bg-purple-600">Git / GitHub</span>
-                        <span class="skill-badge bg-purple-600">VS Code</span>
-                        <span class="skill-badge bg-purple-600">Canva</span>
-                        <span class="skill-badge bg-purple-600">CapCut (Editor)</span>
-                        <span class="skill-badge bg-purple-600">XAMPP/WAMP</span>
-                    </div>
-                </div>
-                
-                <div class="skills-category-card bg-gray-900 p-5 rounded-lg border border-blue-700/50">
-                    <h3 class="text-xl font-semibold text-white mb-4 border-b border-gray-700 pb-2">
-                        Concepts & Soft Skills
-                    </h3>
-                    <div class="flex flex-wrap gap-3">
-                        <span class="skill-badge bg-indigo-600">UI/UX Principles</span>
-                        <span class="skill-badge bg-indigo-600">Problem-Solving</span>
-                        <span class="skill-badge bg-indigo-600">Team Collaboration</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </main>
-
-    <main id="certificate-section" class="w-full hidden items-start justify-start px-8 md:px-24">
-        <div class="container mx-auto max-w-6xl">
-
-            <h1 class="text-3xl md:text-4xl font-extrabold text-blue-400 mb-8">
-                Certificates <i class="fas fa-certificate ml-3"></i> ----------------------------------
-            </h1>
-
-            <p class="text-base text-gray-400 mb-10">
-                Professional trainings and certifications that support my technical and academic background.
-            </p>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-
-                <!-- Certificate 1 -->
-                <div class="bg-gray-900 rounded-lg border border-blue-700/50 overflow-hidden hover:shadow-lg hover:shadow-blue-500/30 transition">
-                    <img src="./Certificates/book keeping.jpg"
-                        alt="Bookkeeping Certificate"
-                        class="w-full h-56 object-contain bg-white p-4"
-                        onclick="openCertificate(this.src)">
-                    <div class="p-4">
-                        <h3 class="text-white font-semibold text-sm">
-                            Bookkeeping Certification
-                        </h3>
-                    </div>
-                </div>
-
-                <!-- Certificate 2 -->
-                <div class="bg-gray-900 rounded-lg border border-blue-700/50 overflow-hidden hover:shadow-lg hover:shadow-blue-500/30 transition">
-                    <img src="./Certificates/Intro_Prog.jpg"
-                        alt="Introduction to Programming Certificate"
-                        class="w-full h-56 object-contain bg-white p-4"
-                        onclick="openCertificate(this.src)">
-                    <div class="p-4">
-                        <h3 class="text-white font-semibold text-sm">
-                            Introduction to Programming
-                        </h3>
-                    </div>
-                </div>
-
-                <!-- Certificate 3 -->
-                <div class="bg-gray-900 rounded-lg border border-blue-700/50 overflow-hidden hover:shadow-lg hover:shadow-blue-500/30 transition">
-                    <img src="./Certificates/Intro_VS.jpg"
-                        alt="Introduction to Visual Studio Certificate"
-                        class="w-full h-56 object-contain bg-white p-4"
-                        onclick="openCertificate(this.src)">
-                    <div class="p-4">
-                        <h3 class="text-white font-semibold text-sm">
-                            Introduction to Visual Studio
-                        </h3>
-                    </div>
-                </div>
-
-                <!-- Certificate 4 -->
-                <div class="bg-gray-900 rounded-lg border border-blue-700/50 overflow-hidden hover:shadow-lg hover:shadow-blue-500/30 transition">
-                    <img src="./Certificates/web development.png"
-                        alt="Web Development Certificate"
-                        class="w-full h-56 object-contain bg-white p-4"
-                        onclick="openCertificate(this.src)">
-                    <div class="p-4">
-                        <h3 class="text-white font-semibold text-sm">
-                            Web Development
-                        </h3>
-                    </div>
-                </div>
-
-                <!-- Certificate 5 -->
-                <div class="bg-gray-900 rounded-lg border border-blue-700/50 overflow-hidden hover:shadow-lg hover:shadow-blue-500/30 transition">
-                    <img src="./Certificates/Career and Freelancing Course_page-0001.jpg"
-                        alt="Career and Freelancing Course Certificate"
-                        class="w-full h-56 object-contain bg-white p-4"
-                        onclick="openCertificate(this.src)">
-                    <div class="p-4">
-                        <h3 class="text-white font-semibold text-sm">
-                            Career and Freelancing Certification
-                        </h3>
-                    </div>
-                </div>
-
-                <!-- Certificate 6 -->
-                <div class="bg-gray-900 rounded-lg border border-blue-700/50 overflow-hidden hover:shadow-lg hover:shadow-blue-500/30 transition">
-                    <img src="./Certificates/Orang Pi PC - Mini Desktop Build_page-0001.jpg"
-                        alt="Mini Desktop build Certificate"
-                        class="w-full h-56 object-contain bg-white p-4"
-                        onclick="openCertificate(this.src)">
-                    <div class="p-4">
-                        <h3 class="text-white font-semibold text-sm">
-                            Desktop build Certification
-                        </h3>
-                    </div>
-                </div>
-
-                <!-- Certificate 7 -->
-                <div class="bg-gray-900 rounded-lg border border-blue-700/50 overflow-hidden hover:shadow-lg hover:shadow-blue-500/30 transition">
-                    <img src="./Certificates/Windows 10 Pro Basics_page-0001.jpg"
-                        alt="Windows 10 Pro Basic Certificate"
-                        class="w-full h-56 object-contain bg-white p-4"
-                        onclick="openCertificate(this.src)">
-                    <div class="p-4">
-                        <h3 class="text-white font-semibold text-sm">
-                            Windows 10 Pro Basic Certification
-                        </h3>
-                    </div>
-                </div>s
-            </div>
-        </div>
-    </main>
-
-    <!-- Certificate Modal -->
-    <div id="certificateModal"
-        class="fixed inset-0 bg-black/90 hidden items-center justify-center z-[999]">
-
-        <button onclick="closeCertificate()"
-                class="absolute top-6 right-8 text-white text-4xl font-bold hover:text-blue-400">
-            &times;
-        </button>
-
-        <img id="certificateModalImage"
-            src=""
-            alt="Certificate Preview"
-            class="max-w-[90%] max-h-[90%] object-contain border-4 border-blue-500 rounded-lg shadow-2xl">
-    </div>
-
-    <main id="contact-section" class="w-full flex items-start justify-start px-8 md:px-24">
-        <div class="container mx-auto max-w-6xl"> 
-            <h1 class="text-3xl md:text-4xl font-extrabold text-blue-400 mb-12">
-                Contact Me <i class="fas fa-handshake ml-3"></i> ----------------------------------------
-            </h1>
-
-            <div class="flex flex-col md:flex-row gap-12">
-                
-                <div class="w-full md:w-2/3 bg-gray-900 p-8 rounded-xl border border-blue-500/50 shadow-2xl">
-                    <h2 class="text-2xl font-bold text-white mb-6">Send Me a Message</h2>
-                    
-                    <form id="contactForm" 
-                          action="https://formspree.io/f/myznjpwj" 
-                          method="POST" 
-                          target="_blank" 
-                          onsubmit="submitAndClear(event)" 
-                          class="space-y-6">
-                        
-                        <div>
-                            <label for="name" class="block text-sm font-medium text-gray-300 mb-2">Name</label>
-                            <input type="text" id="name" name="Name" required
-                                class="contact-input w-full px-4 py-3 rounded-lg text-base"
-                                placeholder="Your Full Name">
-                        </div>
-
-                        <div>
-                            <label for="email" class="block text-sm font-medium text-gray-300 mb-2">Email</label>
-                            <input type="email" id="email" name="_replyto" required
-                                class="contact-input w-full px-4 py-3 rounded-lg text-base"
-                                placeholder="name@example.com">
-                        </div>
-
-                        <div>
-                            <label for="comment" class="block text-sm font-medium text-gray-300 mb-2">Comment / Message</label>
-                            <textarea id="comment" name="Message" rows="6" required
-                                class="contact-textarea w-full px-4 py-3 rounded-lg text-base resize-none"
-                                placeholder="I'd love to discuss a project with you..."></textarea>
-                        </div>
-
-                        <button type="submit"
-                            class="w-full px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 hover:scale-[1.01]">
-                            Send Message <i class="fas fa-paper-plane ml-2"></i>
-                        </button>
-                    </form>
-                </div>
-
-                <div class="w-full md:w-1/3 bg-gray-900 p-8 rounded-xl border border-blue-500/50 shadow-2xl flex flex-col items-center">
-                    <h2 class="text-2xl font-bold text-white mb-6">Find Me on Socials</h2>
-                    <p class="text-gray-400 text-center mb-8">Connect with me for quicker responses or to see my updates.</p>
-
-                    <div class="flex flex-col space-y-5 w-full">
-                        
-                        <a href="https://github.com/zekalia-code" target="_blank" class="flex items-center space-x-4 p-3 bg-gray-800 rounded-lg hover:bg-gray-700 transition duration-200 group">
-                            <i class="fab fa-github fa-2x text-gray-400 group-hover:text-white transition-colors"></i>
-                            <span class="text-lg font-medium text-white">GitHub</span>
-                            <i class="fas fa-external-link-alt ml-auto text-gray-500 group-hover:text-blue-400 text-sm"></i>
-                        </a>
-
-                        <a href="https://www.facebook.com/z3kalia/" target="_blank" class="flex items-center space-x-4 p-3 bg-gray-800 rounded-lg hover:bg-gray-700 transition duration-200 group">
-                            <i class="fab fa-facebook-f fa-2x text-gray-400 group-hover:text-[#3b5998] transition-colors"></i>
-                            <span class="text-lg font-medium text-white">Facebook</span>
-                            <i class="fas fa-external-link-alt ml-auto text-gray-500 group-hover:text-blue-400 text-sm"></i>
-                        </a>
-                        
-                        <a href="mailto:neilmntsns@gmail.com" target="_blank" class="flex items-center space-x-4 p-3 bg-gray-800 rounded-lg hover:bg-gray-700 transition duration-200 group">
-                            <i class="far fa-envelope fa-2x text-gray-400 group-hover:text-[#DB4437] transition-colors"></i>
-                            <span class="text-lg font-medium text-white">Gmail</span>
-                            <i class="fas fa-external-link-alt ml-auto text-gray-500 group-hover:text-blue-400 text-sm"></i>
-                        </a>
-                        
-                        <a href="https://www.instagram.com/human_fist_248/" target="_blank" class="flex items-center space-x-4 p-3 bg-gray-800 rounded-lg hover:bg-gray-700 transition duration-200 group">
-                            <i class="fab fa-instagram fa-2x text-gray-400 group-hover:text-[#E1306C] transition-colors"></i>
-                            <span class="text-lg font-medium text-white">Instagram</span>
-                            <i class="fas fa-external-link-alt ml-auto text-gray-500 group-hover:text-blue-400 text-sm"></i>
-                        </a>
-
-                        <a href="https://t.me/Zekalia" target="_blank" class="flex items-center space-x-4 p-3 bg-gray-800 rounded-lg hover:bg-gray-700 transition duration-200 group">
-                            <i class="fab fa-telegram-plane fa-2x text-gray-400 group-hover:text-[#0088cc] transition-colors"></i>
-                            <span class="text-lg font-medium text-white">Telegram</span>
-                            <i class="fas fa-external-link-alt ml-auto text-gray-500 group-hover:text-blue-400 text-sm"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </main>
-
-    <script src="./script.js"></script>
-
+  <script src="js/main.js"></script>
 </body>
 </html>
